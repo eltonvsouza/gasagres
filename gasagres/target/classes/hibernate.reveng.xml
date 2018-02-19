@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+ <table-filter match-catalog="geng" match-name="configuracao"/>
+ <table-filter match-catalog="geng" match-name="diario"/>
+ <table-filter match-catalog="geng" match-name="empresa"/>
+ <table-filter match-catalog="geng" match-name="filho"/>
+ <table-filter match-catalog="geng" match-name="funcao"/>
+ <table-filter match-catalog="geng" match-name="geral"/>
+ <table-filter match-catalog="geng" match-name="insalubridade"/>
+ <table-filter match-catalog="geng" match-name="ocorrencia"/>
+ <table-filter match-catalog="geng" match-name="recibo"/>
+ <table-filter match-catalog="geng" match-name="responsavel"/>
+ <table-filter match-catalog="geng" match-name="servico"/>
+ <table-filter match-catalog="geng" match-name="trabalhador"/>
+ <table-filter match-catalog="geng" match-name="unidade"/>
+ <table-filter match-catalog="geng" match-name="usuario"/>
+<!--  <table-filter match-catalog="geng" match-name="grupo"/> -->
+<!--  <table-filter match-catalog="geng" match-name="usuariogrupo"/> -->
+<!--  <table-filter match-catalog="geng" match-name="paises"/> -->
+ <table-filter match-catalog="geng" match-name="uf"/>
+<!--  <table-filter match-catalog="geng" match-name="cidade"/> -->
+<!--  <table-filter match-catalog="geng" match-name="endereco"/> -->
+<!--  <table-filter match-catalog="geng" match-name="bairro"/> -->
+ <table-filter match-catalog="geng" match-name="cnaefiscal"/>
+<!---->
+<!--  <table-filter match-catalog="geng" match-name="ncm"/>-->
+<!--  <table-filter match-catalog="geng" match-name="unidademedida"/>-->
+<!--  <table-filter match-catalog="geng" match-name="cfop"/>-->
+<!--  <table-filter match-catalog="geng" match-name="produto"/>-->
+<!--  <table-filter match-catalog="geng" match-name="transportadora"/>-->
+<!--  <table-filter match-catalog="geng" match-name="veiculo"/>-->
+<!--  <table-filter match-catalog="geng" match-name="fornecedor"/>-->
+<!--  <table-filter match-catalog="geng" match-name="notafiscal"/>-->
+<!--  <table-filter match-catalog="geng" match-name="nfitem"/>-->
+</hibernate-reverse-engineering>

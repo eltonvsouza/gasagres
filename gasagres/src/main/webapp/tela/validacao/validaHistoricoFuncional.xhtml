@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/tela/template.xhtml">
+	<ui:define name="titulo">#{inter.tsistema} - #{inter.tlistavalidacao} - #{inter.thistoricoFuncional}</ui:define>
+	<ui:define name="conteudo">
+		<h:outputStylesheet>
+	        .even-row {
+	        background-color: #FCFFFE;
+	        }
+	 
+	        .odd-row {
+	        background-color: #ECF3FE;
+	        }
+	 
+	        .active-row {
+	        background-color: #FFEBDA !important;
+	        cursor: pointer;
+	        }
+		</h:outputStylesheet>
+		<f:loadBundle basename="message_pt_BR" var="inter" />
+		<h:form>
+			
+				<a4j:outputPanel ajaxRendered="true">
+	       			<rich:dataTable id="lista" value="#{validaDadosBean.historicoFuncional}" var="historicoFuncional" rows="27" 
+				       				rowClasses="odd-row, even-row" styleClass="stable" style="align:center; width:100%;">
+	       				<f:facet name="header">
+	               			<rich:columnGroup>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbcpf}" />
+	                  				</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbcargo}" />
+	                   			</rich:column>
+	                   			<rich:column>
+								<h:outputText value="#{inter.tbdatamovfunc}" />
+							</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbmatricula}" />
+	                   			</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbmesano}" />
+	                   			</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbcpfsegurado}" />
+	                   			</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbtipoatomov}" />
+	                   			</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbsituacaofunc}" />
+	                   			</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tbregime}" />
+	                   			</rich:column>
+	                   			<rich:column>
+	                   				<h:outputText value="#{inter.tblotacao}" />
+	                   			</rich:column>
+	                  			</rich:columnGroup>
+	             			</f:facet>
+						<rich:column width="10px" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[0]}"/>
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[1]}" />
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:center;">
+	               			<h:outputText value="#{historicoFuncional[2]}">
+	               				<f:convertDateTime pattern="dd/MM/yyyy"/>
+	               			</h:outputText>
+	           			</rich:column>
+	           			<rich:column width="10px" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[3]}" />
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:center;">
+	               			<h:outputText value="#{historicoFuncional[4]}"/>
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[5]}" />
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[6]}" />
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[7]}" />
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[8]}" />
+	           			</rich:column>
+	           			<rich:column width="10" style="text-align:right;">
+	               			<h:outputText value="#{historicoFuncional[9]}" />
+	           			</rich:column>
+						<f:facet name="footer">
+							<rich:dataScroller for="lista" maxPages="20" id="ds" />
+						</f:facet>
+			        </rich:dataTable>
+					<rich:jQuery selector=".stable tr:odd" query="addClass('rowOdd')" />
+				    <rich:jQuery selector=".stable tr:even" query="addClass('rowEven')" />
+				    <rich:jQuery selector=".stable tr" event="mouseover" query="jQuery(this).addClass('active-row')" />
+				    <rich:jQuery selector=".stable tr" event="mouseout" query="jQuery(this).removeClass('active-row')" />
+		        </a4j:outputPanel>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

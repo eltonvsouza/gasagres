@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: GASagres
+Bundle-SymbolicName: GASagres
+Bundle-Version: 1.0.0.qualifier
+Export-Package: br.gov.pb.relatorio.jasper,
+ br.gov.pb.relatorio.jrxml,
+ br.gov.pb.aspect,
+ br.gov.pb.bean,
+ br.gov.pb.converter,
+ br.gov.pb.dao.utility,
+ br.gov.pb.relatorio,
+ br.gov.pb.util
+Require-Bundle: org.aspectj.runtime
+Import-Package: br.gov.pb.util,
+ br.gov.pb.util,
+ org.apache.commons.lang;version="2.1.0"

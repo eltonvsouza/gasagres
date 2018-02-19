@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/tela/template.xhtml">
+	<ui:define name="titulo">#{inter.tsistema} - #{inter.tdescricao} - UPLOAD</ui:define>
+	<ui:define name="conteudo" >
+		<h:form id="formUpload" style="margin-top: 20%">
+			<rich:panel style=" width : 433px; margin-left : auto; margin-right : auto;" header="#{inter.tdescricao} - UPLOAD">
+					<h:panelGrid columns="1">
+		        	<h:panelGrid columns="2" columnClasses="top,top">
+			            <rich:fileUpload fileUploadListener="#{uploadBean.listener}"
+			            				addControlLabel="Escolher arquivo"
+			                			doneLabel="Arquivo carregado com sucesso..."
+			            				clearAllControlLabel="Limpar Todos"
+						                clearControlLabel="Limpar"
+						                progressLabel="Carregando..."
+						                stopEntryControlLabel="Parar"
+			            				noDuplicate="true"
+			                			maxFilesQuantity="3"
+			            				id="upload"
+			            				listHeight="200px"
+			            				acceptedTypes="xls, xlsx"
+			                			ontyperejected="alert('Só são aceitos arquivos com extensões xls e xlsx);"
+			                			immediateUpload="true"
+			                			allowFlash="true">
+			            </rich:fileUpload>
+		                <a4j:commandButton action="#{uploadBean.clearUploadData}" render="info, upload" value="Limpar Dados"
+		                    rendered="#{uploadBean.size>0}" />
+			        </h:panelGrid>
+			        <center style="margin-top: 10px">
+			        	<h:commandButton value="Voltar" action="#{gerarArquivoBean.carregarIndex}" style="width:70px; align:left;"></h:commandButton>
+		        	</center>
+				</h:panelGrid>
+<!-- 				<ui:include src="/tela/mensagem/mensagem.xhtml" /> -->
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

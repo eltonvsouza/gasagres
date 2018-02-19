@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+<!-- 		<property name="hibernate.connection.driver_class">com.microsoft.jdbc.sqlserver.SQLServerDriver</property> -->
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password">sa</property>
+		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433/RH_SAGRES;namedpipe=true</property>
+<!-- 		<property name="hibernate.connection.url">jdbc:microsoft:sqlserver://localhost:1433;DataBaseName=RH_TESTE</property> -->
+<!-- 		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://localhost:1433;DatabaseName=RH_TESTE</property> -->
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>  
+        <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>  
+        <property name="hibernate.show_sql">true</property>  
+        <property name="hibernate.hbm2ddl.auto">update</property>  
+        <property name="hibernate.generate_statistics">true</property>  
+        <property name="hibernate.use_sql_comments">true</property> 
+<!-- Configurações do pool -->
+<!-- 		<property name="hibernate.c3p0.min_size">10</property> -->
+<!-- 		<property name="hibernate.c3p0.max_size">100</property> -->
+<!-- 		<property name="hibernate.c3p0.timeout">100</property> -->
+<!-- 		<property name="hibernate.c3p0.idle_test_period">100</property> -->
+<!-- 		<property name="hibernate.c3p0.acquire_increment">1</property> -->
+<!-- 		<property name="hibernate.c3p0.max_statements">0</property> -->
+
+<!-- 		<mapping class="br.gov.pb.model.Servidor" /> -->
+	</session-factory>
+</hibernate-configuration>

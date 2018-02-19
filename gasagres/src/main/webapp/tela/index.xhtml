@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/tela/template.xhtml">
+	<ui:define name="titulo">#{inter.tsistema} - #{inter.tdescricao}</ui:define>
+	<ui:define name="conteudo" >
+	<a4j:outputPanel id="enderecoFoco" >
+		<rich:jQuery timing="domready" selector="#data" query="focus()"/>
+	</a4j:outputPanel>
+	<h:outputStylesheet>
+     .MarcxSelectStyle input{
+       width: 130px;
+     }
+	</h:outputStylesheet>
+	<rich:jQuery query="mask('99/9999')" selector="#data" timing="domready" />
+	<rich:jQuery query="mask('99/9999')" selector="#datavalidacao" timing="domready" />
+		<h:form id="formArquivo" style="margin-top: 20%">
+			<rich:panel style=" width : 280px; margin-left : auto; margin-right : auto;" header="#{inter.tdescricao}">
+			    <rich:panel style=" width : 250px; margin-left : auto; margin-right : auto;">
+					<h:panelGrid border="0" columns="3" style=" width : 100%; margin-left : auto; margin-right : auto;">
+						<h:outputText value="#{inter.cmesano}" style="float: right;"/>
+					    <h:inputText value="#{gerarArquivoBean.data}" maxlength="6" id="data" required="true" style=" width:42px; align:left;" requiredMessage="Preencha o campo Mês/Ano!"/>
+						<h:commandButton value="Validar" id="btvalidar" action="#{validaDadoBean.carregarValidaDado}" style="width:70px; margin-left:20px" disabled="true">
+							<f:setPropertyActionListener target="#{validaDadoBean.data}" value="#{gerarArquivoBean.data}"/>
+							<rich:tooltip id="ttValidar" styleClass="tooltip" layout="block">
+			                	<span style="white-space: nowrap"><strong>Exibe</strong> os campos que contêm alguma incosistência<br/>para à importação no <strong>SAGRES</strong>.</span>
+		            		</rich:tooltip>
+						</h:commandButton>
+						<h:outputText value="#{inter.ctipo13sal}" style="float: right;"/>
+						<rich:select value="#{gerarArquivoBean.tipo13Sal}" styleClass="MarcxSelectStyle" style="width:50px;">
+			                <f:selectItem itemValue="0" itemLabel="Normal"/>
+			                <f:selectItem itemValue="1" itemLabel="Adiantamento 13º Salário" />
+			                <f:selectItem itemValue="2" itemLabel="13º Salário" />
+			                <rich:tooltip id="ttTipo13Sal" styleClass="tooltip" layout="block">
+			                	<span style="white-space: nowrap">Selecione a opção <strong>Adiantamento 13º Salário</strong> <br />para acessar a tabela com o campo <strong>tipo13sal = 1</strong></span>
+		            		</rich:tooltip>
+			            </rich:select>
+					</h:panelGrid>
+					<h:commandButton value="Upload" id="btUpload" action="#{uploadBean.carregarUpload}" style="width:100%; height:40px; align:left;" disabled="true">
+						<rich:tooltip id="ttUpload" styleClass="tooltip" layout="block">
+		                	<span style="white-space: nowrap"><strong>UPLOAD</strong> dos arquivos (Excel) gerados pelo <strong>SAGRES</strong>.</span>
+	            		</rich:tooltip>
+            		</h:commandButton>
+					<a4j:commandButton value="#{inter.btgerar}" id="btGerar" action="#{gerarArquivoBean.gerarArquivos}" render="download" style="width:100%; height:40px; align:left;">
+						<rich:tooltip id="ttGera" styleClass="tooltip" layout="block">
+		                	<span style="white-space: nowrap"><strong>Gera</strong> o arquivo (ZIP) com os TXT's</span>
+	            		</rich:tooltip>
+            		</a4j:commandButton>
+            		<a4j:outputPanel id="download">
+						<h:commandButton value="Download" id="btDownload" actionListener="#{gerarArquivoBean.download}" action="#{gerarArquivoBean.carregarIndex}" disabled="#{gerarArquivoBean.btDownload}" immediate="true" style="width:100%; height:40px; align:left;">
+							<rich:tooltip id="ttDownload" styleClass="tooltip" layout="block">
+			                	<span style="white-space: nowrap"><strong>Download</strong> do arquivo (ZIP) que contém os<br/>TXT's a serem importados pelo <strong>SAGRES</strong>.</span>
+		            		</rich:tooltip>
+						</h:commandButton>
+					</a4j:outputPanel>
+				</rich:panel>
+				
+				<ui:include src="/tela/mensagem/mensagem.xhtml" />
+				<center style="margin-top: 10px">
+				</center>
+			</rich:panel>
+		</h:form>
+		<rich:popupPanel modal="true" id="mpStatus" width="150" height="55">
+			<h:panelGrid columns="2">
+	        	<h:graphicImage value="/imagem/icon/ai.gif"/>
+				<a4j:status onstart="#{rich:component('mpStatus')}.show();" onstop="#{rich:component('mpStatus')}.hide();" startText="Aguarde..." startStyle="color:red; margin-left:20px;" />
+			</h:panelGrid>
+		</rich:popupPanel>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/tela/template.xhtml">
+	<ui:define name="titulo">#{inter.tsistema} - #{inter.tlistavalidacao}</ui:define>
+	<ui:define name="conteudo">
+	<rich:panel style=" width : 950px; margin-left : auto; margin-right : auto;" header="#{inter.tlistavalidacao}">
+       	<h:form id="formValidacao">
+			<rich:tabPanel switchType="client">
+		        <rich:tab header="#{inter.tservidor}">
+					<ui:include src="/tela/validacao/validaServidor.xhtml" />
+		        </rich:tab>
+		        <rich:tab header="#{inter.tmatricula}">
+					<ui:include src="/tela/validacao/validaMatricula.xhtml" />
+		        </rich:tab>
+		        <rich:tab header="#{inter.tcargo}">
+					<ui:include src="/tela/validacao/validaCargo.xhtml" />
+		        </rich:tab>
+		        <rich:tab header="#{inter.thistoricofuncional}">
+					<ui:include src="/tela/validacao/validaHistoricoFuncional.xhtml" />
+		        </rich:tab>
+		        <rich:tab header="#{inter.tvantagemdesconto}">
+					<ui:include src="/tela/validacao/validaVantagemDesconto.xhtml" />
+		        </rich:tab>
+		        <rich:tab header="#{inter.tfolhapagamento}">
+					<ui:include src="/tela/validacao/validaFolhaPagamento.xhtml" />
+		        </rich:tab>
+		        <center style="margin-top: 10px">
+			        <h:commandButton value="#{inter.btvoltar}" id="btvoltar" action="#{gerarArquivoBean.carregarIndex}" style="width:70px; align:left;"/>
+		        </center>
+    		</rich:tabPanel>
+       	</h:form>
+    </rich:panel>
+	</ui:define>
+</ui:composition>
+</html>
